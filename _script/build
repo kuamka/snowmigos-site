@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Build the site.
+set -euo pipefail
+cd "$(dirname "$0")/.."
+exec ./_script/_jekyll build "$@"

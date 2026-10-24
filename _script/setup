@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# Install the gems this site needs, into vendor/bundle. Nothing builds until
+# this has been run once.
+set -euo pipefail
+cd "$(dirname "$0")/.."
+
+ruby_version="$(cat .ruby-version)"
+ruby_bin="${RBENV_ROOT:-$HOME/.rbenv}/versions/$ruby_version/bin"
+if [ ! -d "$ruby_bin" ]; then
+  echo "_script/setup: Ruby $ruby_version is not installed at $ruby_bin" >&2
+  echo "_script/setup: install it with 'rbenv install $ruby_version'" >&2
+  exit 1
+fi
+
+# A user-wide GEM_HOME (rbenv is not the only thing that sets one) puts gems
+# built for a newer Ruby ahead of 3.0.0's own, and bundler dies on
+# 'cannot load such file -- random/formatter'. Use this Ruby's gems only.
+unset GEM_HOME GEM_PATH
+export PATH="$ruby_bin:$PATH"
+exec bundle install "$@"

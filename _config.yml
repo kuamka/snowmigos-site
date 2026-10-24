@@ -1,0 +1,55 @@
+# Site settings for snowmigos.com. Built by GitHub Pages from master.
+title: "Snowmigos"
+logo: "assets/images/snowmigos-icon.svg"
+email: support@kuamka.com
+description: >- # this means to ignore newlines until "url:"
+  See where your crew is on the mountain
+url: https://snowmigos.com
+name: "Kuamka Ltd"
+locale: en-GB
+github_username: kuamka
+repository: kuamka/snowmigos-site
+minimal_mistakes_skin: default
+
+# Build settings
+markdown: kramdown
+remote_theme: mmistakes/minimal-mistakes
+timezone: "Europe/London"
+
+# .well-known has to be listed here or Jekyll skips the dot-directory and the
+# app-association files never reach _site.
+include:
+  - _pages
+  - .well-known
+
+# Exclude from processing.
+# Jekyll 3 (GitHub Pages) replaces its default list with this one rather than
+# adding to it, so the defaults are repeated here.
+exclude:
+  - docs
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+
+plugins:
+  - jekyll-feed
+  - jekyll-include-cache
+  - jekyll-sitemap
+
+footer:
+  links:
+    - label: "Email"
+      icon: "far fa-envelope"
+      url: "mailto:support@kuamka.com"
+
+defaults:
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: single
+      author_profile: false

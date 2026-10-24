@@ -1,0 +1,63 @@
+#!/usr/bin/env bash
+# Run Jekyll with the Ruby and locale this site needs. _script/build and
+# _script/serve both go through it.
+set -euo pipefail
+cd "$(dirname "$0")/.."
+
+# jekyll-sass-converter reads the theme's SCSS as US-ASCII without a UTF-8
+# locale and dies on 'Invalid US-ASCII character "\xE2"'. LC_ALL rather than
+# LANG, because it is the only one that overrides the per-category variables,
+# and chosen from what `locale -a` reports rather than assumed.
+available="$(locale -a 2>/dev/null || true)"
+
+locale_installed() {
+  printf '%s\n' "$available" | grep -qxF "$1"
+}
+
+pick_locale() {
+  local current="${LC_ALL:-${LANG:-}}"
+  case "$current" in
+    *UTF-8 | *utf8 | *UTF8)
+      if locale_installed "$current"; then
+        printf '%s\n' "$current"
+        return 0
+      fi
+      ;;
+  esac
+  local candidate
+  for candidate in C.UTF-8 C.utf8 en_GB.UTF-8 en_US.UTF-8 en_GB.utf8 en_US.utf8; do
+    if locale_installed "$candidate"; then
+      printf '%s\n' "$candidate"
+      return 0
+    fi
+  done
+  # No locale database to ask. A system without one still commonly honours this.
+  printf 'C.UTF-8\n'
+}
+
+chosen_locale="$(pick_locale)"
+export LANG="$chosen_locale" LC_ALL="$chosen_locale"
+
+# github-pages pins a Jekyll 3.x that calls Logger#level in a way Ruby 3.3
+# removed. .ruby-version names the version that works; PATH is not trusted.
+ruby_version="$(cat .ruby-version)"
+ruby_bin="${RBENV_ROOT:-$HOME/.rbenv}/versions/$ruby_version/bin"
+
+if [ ! -d "$ruby_bin" ]; then
+  echo "_script/_jekyll: Ruby $ruby_version is not installed at $ruby_bin" >&2
+  echo "_script/_jekyll: install it with 'rbenv install $ruby_version'" >&2
+  exit 1
+fi
+# A user-wide GEM_HOME (rbenv is not the only thing that sets one) puts gems
+# built for a newer Ruby ahead of 3.0.0's own, and bundler dies on
+# 'cannot load such file -- random/formatter'. Use this Ruby's gems only.
+unset GEM_HOME GEM_PATH
+export PATH="$ruby_bin:$PATH"
+
+# Bundler's own error here is unhelpful.
+if ! bundle check >/dev/null 2>&1; then
+  echo "_script/_jekyll: gems are not installed. Run ./_script/setup first." >&2
+  exit 1
+fi
+
+exec bundle exec jekyll "$@"
