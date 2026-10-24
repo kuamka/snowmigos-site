@@ -1,0 +1,11 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "9DG4MJ43HD.com.kuamka.snowmigos",
+        "paths": ["/join/*", "/join"]
+      }
+    ]
+  }
+}
