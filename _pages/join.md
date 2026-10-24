@@ -5,16 +5,19 @@ layout: single
 author_profile: false
 ---
 
-<div style="text-align:center; max-width:420px; margin:0 auto;">
-  <img src="/assets/images/snowmigos-icon.svg" alt="Snowmigos" width="96" height="96" style="border-radius:22px;" />
+<div class="panel" markdown="1">
 
-  <p style="margin-top:1rem;">A friend invited you to see each other on the mountain. Get the app, then tap the link again to join the trip.</p>
+![Snowmigos](/assets/images/snowmigos-icon.svg){: .panel__icon}
 
-  <p style="margin-top:1.5rem;">Snowmigos is coming to the App Store and Google Play</p>
+A friend invited you to see each other on the mountain. Get the app, then tap the link again to join the trip.
 
-  <p style="margin-top:1rem;"><a href="#" id="sm-open" style="display:none;">Already have the app? Open it</a></p>
+Snowmigos is coming to the App Store and Google Play
 
-  <p style="margin-top:2rem;"><a href="/privacy/">What the app does with your location</a></p>
+<a href="#" id="sm-open" hidden>Already have the app? Open it</a>
+
+[What the app does with your location](/privacy/)
+{: .panel__footnote}
+
 </div>
 
 <script>
@@ -23,8 +26,8 @@ author_profile: false
   (function () {
     var token = new URLSearchParams(window.location.search).get('token');
     if (!token) { return; }
-    var open = document.getElementById('sm-open');
-    open.href = 'snowmigos://join/' + encodeURIComponent(token);
-    open.style.display = 'inline';
+    var link = document.getElementById('sm-open');
+    link.href = 'snowmigos://join/' + encodeURIComponent(token);
+    link.hidden = false;
   })();
 </script>

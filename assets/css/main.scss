@@ -1,0 +1,34 @@
+---
+# Empty front matter, so Jekyll processes this file. It replaces the theme's
+# own main.css, hence the two imports before anything of ours.
+---
+
+@charset "utf-8";
+
+@import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}";
+@import "minimal-mistakes";
+
+/* The centred column both the landing page and the invite page are built from.
+   The splash layout adds no padding of its own, so without the top padding the
+   content starts flush against the masthead. */
+.panel {
+  max-width: 26rem;
+  margin: 0 auto;
+  padding: 3rem 1rem 4rem;
+  text-align: center;
+
+  > * + * {
+    margin-top: 1.5rem;
+  }
+}
+
+.panel__icon {
+  width: 96px;
+  height: 96px;
+  border-radius: 22px;
+}
+
+/* Trailing links: the policy, the company. Set apart from the copy above. */
+.panel__footnote {
+  margin-top: 3rem;
+}
