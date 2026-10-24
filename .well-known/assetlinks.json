@@ -1,12 +1,1 @@
-[
-  {
-    "relation": ["delegate_permission/common.handle_all_urls"],
-    "target": {
-      "namespace": "android_app",
-      "package_name": "com.kuamka.snowmigos",
-      "sha256_cert_fingerprints": [
-        "F5:63:9A:37:DF:E5:F0:61:A2:57:25:AE:6F:72:64:E2:6D:C3:6B:33:14:B1:C8:5A:C2:08:F4:F5:59:A4:AF:B7"
-      ]
-    }
-  }
-]
+[]

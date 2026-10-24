@@ -14,5 +14,5 @@ hidden: true
 
   <p>Coming to the App Store and Google Play</p>
 
-  <p style="margin-top:2rem;"><a href="https://kuamka.com">Made by Kuamka</a></p>
+  <p style="margin-top:2rem;"><a href="/privacy/">Privacy policy</a> · <a href="https://kuamka.com">Made by Kuamka</a></p>
 </div>

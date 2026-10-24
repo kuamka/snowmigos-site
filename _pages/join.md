@@ -13,6 +13,8 @@ author_profile: false
   <p style="margin-top:1.5rem;">Snowmigos is coming to the App Store and Google Play</p>
 
   <p style="margin-top:1rem;"><a href="#" id="sm-open" style="display:none;">Already have the app? Open it</a></p>
+
+  <p style="margin-top:2rem;"><a href="/privacy/">What the app does with your location</a></p>
 </div>
 
 <script>

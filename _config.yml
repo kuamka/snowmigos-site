@@ -42,6 +42,9 @@ plugins:
 
 footer:
   links:
+    - label: "Privacy"
+      icon: "fas fa-user-shield"
+      url: "/privacy/"
     - label: "Email"
       icon: "far fa-envelope"
       url: "mailto:support@kuamka.com"
