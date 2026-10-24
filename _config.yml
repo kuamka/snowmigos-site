@@ -10,6 +10,9 @@ locale: en-GB
 github_username: kuamka
 repository: kuamka/snowmigos-site
 minimal_mistakes_skin: default
+# Shown in link previews when an invite is shared into WhatsApp or Instagram.
+og_image: "/assets/images/snowmigos-og.png"
+copyright: "Kuamka Ltd"
 
 # Build settings
 markdown: kramdown
@@ -36,9 +39,13 @@ exclude:
   - vendor/ruby/
 
 plugins:
-  - jekyll-feed
   - jekyll-include-cache
   - jekyll-sitemap
+
+# No posts, so jekyll-feed would generate an empty /feed.xml and the theme
+# would link it.
+atom_feed:
+  hide: true
 
 footer:
   links:

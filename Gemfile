@@ -5,16 +5,12 @@ gem "github-pages", group: :jekyll_plugins
 gem "tzinfo-data"
 gem "wdm", "~> 0.1.0" if Gem.win_platform?
 
-# If you have any plugins, put them here!
+# Only the plugins _config.yml declares. GitHub Pages honours that list and
+# nothing else, so a plugin auto-required here but missing there would work
+# locally and fail in production.
 group :jekyll_plugins do
-  gem "jekyll-paginate"
-  gem "jekyll-sitemap"
-  gem "jekyll-gist"
-  gem "jekyll-feed"
-  gem "jemoji"
   gem "jekyll-include-cache"
-  gem "jekyll-algolia"
-  gem "jekyll-redirect-from"
+  gem "jekyll-sitemap"
 end
 
 gem "webrick", "~> 1.7"

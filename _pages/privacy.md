@@ -32,6 +32,12 @@ This policy covers the Snowmigos app on iOS and Android, and the backend service
 support it. It does not cover any third-party service you reach from the app, or the
 wider kuamka.com website.
 
+It also covers this website, snowmigos.com, which is a handful of static pages. The
+site sets no cookies, runs no analytics and asks you for nothing. It is served by
+GitHub Pages, which as part of delivering it receives the usual request details,
+including your IP address — see the [GitHub Privacy
+Statement](https://docs.github.com/site-policy/privacy-policies/github-privacy-statement).
+
 ## How you sign in
 
 Snowmigos does not ask for an email address, phone number, password or real name. When
