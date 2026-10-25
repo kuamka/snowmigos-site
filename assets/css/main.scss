@@ -20,6 +20,17 @@
   > * + * {
     margin-top: 1.5rem;
   }
+
+  /* The product name under the icon. Deliberately not a heading: the theme
+     hangs a permalink anchor off every heading with an id, which throws the
+     centring out, and the page already carries its name in <title> and
+     og:title. Nested so it outweighs the theme's own `.page__content p`. */
+  .panel__title {
+    font-family: $header-font-family;
+    font-size: 2em;
+    font-weight: bold;
+    line-height: 1.2;
+  }
 }
 
 .panel__icon {
