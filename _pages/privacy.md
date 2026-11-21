@@ -8,7 +8,7 @@ toc_sticky: true
 author_profile: false
 ---
 
-_Last updated: 24 October 2026_
+_Last updated: 21 November 2026_
 
 This policy explains what personal data the Snowmigos mobile app collects, why we
 collect it, who we share it with and the choices you have. Snowmigos helps a group of
@@ -70,6 +70,28 @@ later can still see where you were.
 You stay in control: you can pause sharing at any time from within the app, and you can
 revoke the location permission in your device settings.
 
+### Crash detection
+
+Crash detection is **off by default**. If you turn it on (Settings → "Alert my crew if I
+crash"), the app watches your phone's accelerometer for the signature of a heavy fall. It
+is best-effort, not a safety device: it can miss falls and can raise false alarms.
+
+- **The accelerometer readings themselves never leave your phone.** They are sampled and
+  analysed on the device and discarded as they go. We do not store or transmit them.
+- **If a heavy impact is detected**, the app shows you a countdown and you can tap
+  **"I'm OK"** to cancel. Nothing is sent to your crew if you cancel in time.
+- **When the impact is detected we record a pending crash on our backend** so the alert
+  still reaches your crew if your phone goes out of signal, loses power or you cannot
+  reach it. That record holds the trip, your account identifier, the time of the impact,
+  the time the alert is due to fire, your last-known position and altitude, and whether
+  you cancelled it or it fired.
+- **If the countdown is not cancelled**, we send your crew a notification naming you,
+  saying you may have crashed, and giving each of them their distance from your last-known
+  position so the nearest person knows to go. Tapping it opens the app at that position.
+
+You can turn crash detection off at any time in Settings. With it off, no impact is
+detected, no pending crash is recorded and no alert is sent.
+
 ### Your profile
 
 - **Display name** — the name you choose to show to your crew. There is no requirement to
@@ -94,9 +116,15 @@ Neither identifies you personally on its own.
 
 ### Push notifications
 
-With your permission, we register a push token for your device so we can send silent
-"wake" notifications. These prompt the app to refresh your crew's positions in the
-background. They carry no message content and are not used for marketing.
+With your permission, we register a push token for your device so we can send it
+notifications. We send two kinds, and neither is used for marketing:
+
+- **Silent "wake" notifications**, which carry no message content. They prompt the app to
+  refresh your crew's positions in the background.
+- **Crash alerts**, which do carry content. When a crew member's crash countdown is not
+  cancelled, everyone else in the trip gets a visible notification naming them, saying they
+  may have crashed, and giving the recipient their distance from that member's last-known
+  position. See [Crash detection](#crash-detection).
 
 ### Optional analytics
 
@@ -127,9 +155,11 @@ Under UK GDPR we rely on the following lawful bases:
 - **To provide the service you have asked for** — creating your account, running your
   trips and sharing your location and activity with your crew while sharing is on. This
   processing is necessary to deliver the app's core function, which you choose to use.
-- **Consent** — for optional analytics, and for the device permissions (location, camera,
-  photos, notifications) that you grant. You can withdraw consent at any time by turning
-  the feature off or revoking the permission in your device settings.
+- **Consent** — for optional analytics, for crash detection (which you switch on yourself,
+  and which is what permits us to record a pending crash and tell your crew you may have
+  crashed), and for the device permissions (location, camera, photos, notifications) that
+  you grant. You can withdraw consent at any time by turning the feature off or revoking the
+  permission in your device settings.
 - **Our legitimate interests** — keeping the service secure and working correctly, and
   understanding and improving the app where you have opted in to analytics.
 
@@ -138,6 +168,14 @@ Under UK GDPR we rely on the following lawful bases:
 **Your crew.** The whole point of the app is to share your live position, activity and
 profile with the other members of any trip you join. Only members of the same trip can
 see your data, and only while you are sharing.
+
+If you have turned on crash detection and a crash alert fires, that same crew also
+receives a notification naming you, saying you may have crashed, and pointing them at your
+last-known position — including on a phone where the app is closed. We treat this as part
+of the sharing you have asked for rather than a disclosure to a third party: the recipients
+are the trip members who can already see your position. It is, though, a more pointed
+disclosure than a position on a map, which is why crash detection is off until you turn it
+on.
 
 **Our service providers (sub-processors).** We use a small number of trusted providers to
 run the app. They process data on our instructions:
@@ -169,6 +207,9 @@ or adequacy regulations.
 - **Your profile** — your display name and profile photo are kept until you change them or
   ask us to delete them. They are not removed automatically when you stop using the app. A
   previous photo is deleted when you set a new one.
+- **Pending crashes** — a crash record stays while it is unresolved. Once you cancel it or
+  it fires, it is deleted automatically seven days later. The record is also deleted with
+  its trip, and when you use **Delete my data**.
 - **Analytics** — retained by PostHog in line with their retention settings (up to 90 days
   by default), and removed if you withdraw consent.
 
@@ -221,10 +262,10 @@ used:
 | Permission | Why it is used |
 |------------|----------------|
 | Location (while using the app and in the background) | Show your position to your crew and keep it updated while your phone is in your pocket |
-| Motion and activity | Tell skiing, riding a lift and resting apart, to place you more accurately on the mountain |
+| Motion and activity | Tell skiing, riding a lift and resting apart, to place you more accurately on the mountain. The phone's accelerometer is also what crash detection watches for a heavy fall, if you have turned it on — those readings stay on your device |
 | Camera | Scan a QR code to join a trip, and optionally take a profile photo |
 | Photos | Optionally choose a profile photo from your library |
-| Notifications | Send silent updates that refresh your crew's positions |
+| Notifications | Send silent updates that refresh your crew's positions, and deliver a crash alert if a crew member may have crashed |
 
 You can change any of these in your device settings at any time. Turning off location
 stops position sharing.
