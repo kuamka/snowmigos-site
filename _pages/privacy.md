@@ -77,7 +77,10 @@ crash"), the app watches your phone's accelerometer for the signature of a heavy
 is best-effort, not a safety device: it can miss falls and can raise false alarms.
 
 - **The accelerometer readings themselves never leave your phone.** They are sampled and
-  analysed on the device and discarded as they go. We do not store or transmit them.
+  analysed on the device and discarded as they go. We do not store or transmit them. If you
+  have turned optional analytics on, a detected impact or near miss does send how hard the
+  knock was as a coarse band — "7–8 g", not a reading — so we can tell whether the detector
+  is tuned sensibly. See [Optional analytics](#optional-analytics).
 - **If a heavy impact is detected**, the app shows you a countdown and you can tap
   **"I'm OK"** to cancel. Nothing is sent to your crew if you cancel in time.
 - **When the impact is detected we record a pending crash on our backend** so the alert
@@ -136,6 +139,11 @@ have configured analytics to minimise data:
 - Only a fixed set of product events is sent (for example, app opened, trip created,
   sharing paused). No free-form text, no screen recording and no automatic capture of
   your activity.
+- If you use crash detection, that fixed set includes what happened to a detected impact —
+  whether you cancelled it, whether your crew was alerted, and whether a knock was discarded
+  as a bump — each with how hard it was and how much the phone was moving afterwards, both
+  as coarse bands rather than readings. These tell us whether the thresholds are set
+  sensibly; they carry no position and no accelerometer data.
 - Approximate location lookup from network address is disabled.
 - Analytics data is processed in the European Union.
 
