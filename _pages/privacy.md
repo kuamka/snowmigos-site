@@ -288,3 +288,9 @@ top of this page. Significant changes will be highlighted in the app.
 Kuamka Ltd
 7 Brownlow St, Leamington Spa, CV32 5XH
 [privacy@kuamka.com](mailto:privacy@kuamka.com)
+0330 223 8431
+
+Email reaches us; the phone line does not. It takes a message and tells you to email, so
+please use [privacy@kuamka.com](mailto:privacy@kuamka.com) for anything about this policy
+or your data. Calls to 0330 numbers cost the same as calls to 01 and 02 numbers and are
+included in inclusive minutes.
