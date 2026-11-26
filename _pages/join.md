@@ -27,7 +27,11 @@ Snowmigos is coming to the App Store and Google Play
     var token = new URLSearchParams(window.location.search).get('token');
     if (!token) { return; }
     var link = document.getElementById('sm-open');
-    link.href = 'snowmigos://join/' + encodeURIComponent(token);
+    // The token goes in the QUERY string: the app's linking config registers `join` and
+    // reads route.params.token, so `snowmigos://join/<token>` opens the app without ever
+    // reaching the Join screen. (Its paste/scan parser still accepts the path form, which
+    // is why that one looked fine.)
+    link.href = 'snowmigos://join?token=' + encodeURIComponent(token);
     link.hidden = false;
   })();
 </script>

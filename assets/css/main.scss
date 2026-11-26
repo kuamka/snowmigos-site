@@ -43,3 +43,53 @@
 .panel__footnote {
   margin-top: 3rem;
 }
+
+/* The beta page. Two platform sections in one column: whichever phone you are holding
+   gets moved to the top by a small script, so neither is styled as the primary. */
+.beta__platform {
+  padding: 1.5rem 1.25rem;
+  border: 1px solid $border-color;
+  border-radius: 8px;
+  text-align: left;
+
+  /* The theme hangs a permalink anchor off headings with an id; these are short
+     labels ("iPhone", "Android") that read better without one. */
+  h3 {
+    margin-top: 0;
+  }
+
+  ol {
+    padding-left: 1.25rem;
+  }
+}
+
+.beta > * + * {
+  margin-top: 1rem;
+}
+
+/* Secondary copy: the caveats under each platform, and the bug-report ask. */
+.beta__note,
+.beta__ask {
+  font-size: 0.85em;
+  color: $muted-text-color;
+}
+
+.beta__ask {
+  text-align: left;
+}
+
+.panel__lede {
+  text-align: left;
+}
+
+/* The QR encodes this page's own URL, for pointing a phone at a laptop screen or a
+   poster in a chalet. */
+.beta__qr {
+  display: block;
+  margin: 0 auto;
+}
+
+.beta__share {
+  font-size: 0.85em;
+  margin-top: 0.5rem !important;
+}

@@ -1,0 +1,9 @@
+# The beta page is unlisted rather than secret: anyone with the link can open it, but
+# it should not turn up in search results while the app is in testing. The page also
+# carries `noindex` and is kept out of the sitemap — robots.txt alone only asks a
+# crawler not to fetch it, which does not stop a well-behaved crawler listing a URL it
+# found elsewhere.
+User-agent: *
+Disallow: /beta/
+
+Sitemap: https://snowmigos.com/sitemap.xml
