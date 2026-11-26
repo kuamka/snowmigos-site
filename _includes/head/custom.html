@@ -1,0 +1,5 @@
+<!-- Per-page robots directive. The theme has no front-matter hook for this, and a
+     site-wide one would be wrong, so pages opt in with `noindex: true`. Pair it with
+     `sitemap: false` (jekyll-sitemap) and a Disallow line in robots.txt: the three do
+     different jobs, and none of them makes a page private — the URL is still public. -->
+{% if page.noindex %}<meta name="robots" content="noindex, nofollow">{% endif %}
